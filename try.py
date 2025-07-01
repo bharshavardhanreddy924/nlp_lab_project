@@ -36,17 +36,12 @@ st.set_page_config(
     page_icon="📈",
     layout="wide"
 )
-
+import os
 # API Configuration
-ALL_GROQ_API_KEYS = [
-    "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",
-    "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",
-    "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",
-    "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",
-    "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",
-    "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"
-]
+ALL_GROQ_API_KEYS = os.getenv("ALL_GROQ_API_KEYS", "").split(",")
+ALL_GROQ_API_KEYS = [key.strip() for key in ALL_GROQ_API_KEYS if key.strip()]
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+
 
 # ========== PDF PROCESSING ==========
 class PDFProcessor:
